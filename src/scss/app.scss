@@ -1,0 +1,110 @@
+:root{
+    --active-element:#6BA6DB;
+    --main-color:#FAF1D9;
+    --ui-gray:rgb(238, 237, 237);
+    // #8F6D38 - коричневый
+    // #FFD796 - бежевый
+    // #DBB06B - бежево-коричневый
+    // #295F8F - синий
+    // #6BA6DB - голубой
+}
+
+
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.main{
+    width: 100vw;
+    background-color: var(--main-color);
+    padding: 5vh 10vw;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position:fixed;
+    width: 80vw;
+    background-color: white;
+    padding:1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+
+
+    &-logo{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+    }
+}
+
+.basket{
+    background-color: var(--active-element);
+    border: none;
+    border-radius: 1rem;
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 8rem;
+    cursor: pointer;
+}
+
+.content{
+    width: 80vw;
+    margin-top: 7vh;
+    padding: 2rem;
+    background-color: white;
+}
+
+.content-setting{
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+
+.list-guitar li{
+    cursor: pointer;
+    display:inline-block;
+    background-color: var(--ui-gray);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+
+.select-sort{
+    letter-spacing: inherit;
+    word-spacing: inherit;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    /* рамка и отступы */
+    border: none;
+    border-bottom: 1px var(--active-element) dashed;
+    color: var(--active-element);
+    padding: 0.1rem 0.4rem;
+    text-decoration: dotted;
+    font-weight: 700;
+    cursor: pointer;
+
+    option{
+        color:black;
+    }
+}
+
+.content-guitars{
+    display:grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
