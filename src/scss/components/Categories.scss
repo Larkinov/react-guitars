@@ -1,0 +1,9 @@
+.list-guitar li{
+    cursor: pointer;
+    display:inline-block;
+    background-color: var(--ui-gray);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+}

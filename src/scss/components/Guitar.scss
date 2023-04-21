@@ -1,0 +1,52 @@
+
+.guitar{
+    padding:1rem;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-image{
+        width: 180px;
+        height: 240px;
+        object-fit: contain;
+    }
+
+    h3{
+        margin: 1rem 0;
+    }
+}
+
+.additional{
+    display:grid;
+    gap: 1rem;
+    background-color: var(--ui-gray);
+    border-radius: 0.5rem;
+    padding:1rem;
+}
+
+.list-additional{
+
+    display: flex;
+    justify-content: center;
+    li{
+        cursor: pointer;
+        display: inline-block;
+        padding: 0.5rem;
+        background-color: white;
+        border-radius: 0.5rem;
+    }
+}
+
+.add{
+    display:flex;
+    align-items: center;
+    padding:1rem;
+    .count-btn{
+        background-color: var(--active-element);
+        border: none;
+        border-radius: 2rem;
+        padding: 0.5rem 0.8rem; 
+        margin: 0 0.5rem;
+        font-weight: 900;
+    }
+}

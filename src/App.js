@@ -1,49 +1,23 @@
 import "./scss/app.scss";
+import Header from "./components/Header";
+import Categories from "./components/Categories";
+import Sort from "./components/Sort";
+import Guitar from "./components/Guitar";
 
 function App() {
   return (
     <div className="main">
-      <div className="header">
-        <div className="header-logo">
-          <img src="./img/logo.svg" alt="logo" width="40px" />
-          <h3>REACT GUITARS</h3>
-        </div>
-        <div className="basket">
-          <p>&#8381;</p>
-          <p>|</p>
-          <img src="./img/basket.svg" alt="basket" width="18px" />
-        </div>
-      </div>
+      <Header />
       <div className="content">
         <div className="content-setting">
-          <ul class="list-guitar">
-            <li>Все</li>
-            <li>Классические</li>
-            <li>Акустические</li>
-            <li>Электрогитары</li>
-            <li>Бас-гитары</li>
-            <li>Укулеле</li>
-          </ul>
-          <form>
-          <label for="sort-guitar">Сортировка по: </label>
-          <select name="sort" id="sort-guitar" className="select-sort">
-            <option value="popularity">популярности</option>
-            <option value="cost-min">цене (возв)</option>
-            <option value="cost-max">цене (убыв)</option>
-            <option value="alphabet">алфавиту</option>
-          </select>
-        </form>
+          <Categories />
+          <Sort/>
         </div>
         <h2>Все гитары</h2>
         <div className="content-guitars">
-          <img src="./img/guitar/guitar-class-1.jpg" alt="" />
-          <img src="./img/guitar/guitar-class-2.jpg" alt="" />
-          <img src="./img/guitar/guitar-class-3.jpg" alt="" />
-          <img src="./img/guitar/guitar-class-4.jpg" alt="" />
-          <img src="./img/guitar/guitar-acoustic-1.jpg" alt="" />
-          <img src="./img/guitar/guitar-acoustic-3.jpg" alt="" />
-          <img src="./img/guitar/guitar-acoustic-2.jpg" alt="" />
-          <img src="./img/guitar/guitar-acoustic-4.jpg" alt="" />
+          <Guitar title="Говно"/>
+          <Guitar title="Говно"/>
+          <Guitar title="Говно"/>
         </div>
       </div>
     </div>
