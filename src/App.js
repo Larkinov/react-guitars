@@ -3,6 +3,8 @@ import Header from "./components/Header";
 import Categories from "./components/Categories";
 import Sort from "./components/Sort";
 import Guitar from "./components/Guitar";
+import guitars from "./assets/data.json";
+
 
 function App() {
   return (
@@ -11,13 +13,20 @@ function App() {
       <div className="content">
         <div className="content-setting">
           <Categories />
-          <Sort/>
+          <Sort />
         </div>
         <h2>Все гитары</h2>
         <div className="content-guitars">
-          <Guitar title="Говно"/>
-          <Guitar title="Говно"/>
-          <Guitar title="Говно"/>
+          {guitars.map((obj) => (
+            <Guitar
+              key={obj.id}
+              name={obj.name}
+              cost={obj.cost}
+              urlImage={obj.urlImage}
+              gString={obj.guitarString}
+              gCase={obj.guitarCase}
+            />
+          ))}
         </div>
       </div>
     </div>

@@ -1,14 +1,35 @@
+import { useState } from "react";
 import "../scss/components/Categories.scss";
 
 function Categories() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const categories = [
+    "Все",
+    "Классические",
+    "Акустические",
+    "Электрогитары",
+    "Бас-гитары",
+    "Укулеле",
+  ];
+
+  const onClickCategory = (index) => {
+    setActiveIndex(index);
+  };
+
   return (
     <ul className="list-guitar">
-      <li>Все</li>
-      <li>Классические</li>
-      <li>Акустические</li>
-      <li>Электрогитары</li>
-      <li>Бас-гитары</li>
-      <li>Укулеле</li>
+      {categories.map((value, index) => (
+        <li
+        key={index}
+          onClick={() => {
+            onClickCategory(index);
+          }}
+          className={activeIndex === index ? "active" : ""}
+        >
+          {value}
+        </li>
+      ))}
     </ul>
   );
 }

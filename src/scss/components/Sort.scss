@@ -1,21 +1,52 @@
 
-.select-sort{
-    letter-spacing: inherit;
-    word-spacing: inherit;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    /* рамка и отступы */
-    border: none;
-    border-bottom: 1px var(--active-element) dashed;
-    color: var(--active-element);
-    padding: 0.1rem 0.4rem;
-    text-decoration: dotted;
-    font-weight: 700;
-    cursor: pointer;
+.sort{
+    position: relative;
+}
 
-    option{
-        color:black;
+.sort-label{
+    span{
+        color:var(--active-element);
+        cursor: pointer;
+        transition: all 0.15 ease-in;
+        border-bottom: 1px dotted var(--active-element);
+
+        &:hover{
+            color:var(--active-element-hover);
+        }
+        &:active{
+            color:var(--active-element-active);
+        }
+    }
+}
+
+.sort-popup{
+    position:absolute;
+    right: 0;
+    margin-top: 1rem;
+    padding:0.5rem;
+    box-shadow: 0px 0px 10px var(--ui-gray);
+    border-radius: 1rem;
+}
+
+.popup-element{
+    cursor: pointer;
+    padding: 0 0.5rem;
+    text-align: center;
+    transition: all 0.15s ease-in;
+
+    &:hover{
+        background-color: var(--active-element);
+    }
+    &:active{
+        background-color: var(--active-element-active);
+    }
+
+    &-active{
+        cursor: pointer;
+        padding: 0 0.5rem;
         text-align: center;
+        transition: all 0.15s ease-in;
+        color: var(--active-element);
+
     }
 }
