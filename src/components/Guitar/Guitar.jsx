@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../scss/components/Guitar.scss";
+import "../../scss/components/Guitar.scss";
 
 function Guitar({ name, cost, urlImage, gString, gCase }) {
   const [guitarCount, setGuitarCount] = useState(0);

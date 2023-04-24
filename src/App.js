@@ -1,33 +1,25 @@
+import {
+  Route,
+  Routes,
+  RouterProvider,
+} from "react-router-dom";
+
 import "./scss/app.scss";
 import Header from "./components/Header";
-import Categories from "./components/Categories";
-import Sort from "./components/Sort";
-import Guitar from "./components/Guitar";
-import guitars from "./assets/data.json";
-
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
     <div className="main">
       <Header />
       <div className="content">
-        <div className="content-setting">
-          <Categories />
-          <Sort />
-        </div>
-        <h2>Все гитары</h2>
-        <div className="content-guitars">
-          {guitars.map((obj) => (
-            <Guitar
-              key={obj.id}
-              name={obj.name}
-              cost={obj.cost}
-              urlImage={obj.urlImage}
-              gString={obj.guitarString}
-              gCase={obj.guitarCase}
-            />
-          ))}
-        </div>
+        <Routes>
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/cart" element={<Cart/>}></Route>
+          <Route path="*" element={<NotFound/>}></Route>
+        </Routes>
       </div>
     </div>
   );
