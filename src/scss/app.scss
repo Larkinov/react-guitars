@@ -5,6 +5,7 @@
     --main-color:#FAF1D9;
     --ui-gray:rgb(238, 237, 237);
     --ui-gray-hover:rgb(223, 223, 223);
+    --ui-gray-active:rgb(241, 241, 241);
     // #8F6D38 - коричневый
     // #FFD796 - бежевый
     // #DBB06B - бежево-коричневый
@@ -38,12 +39,29 @@
     display:flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+
+    @media (max-width:1300px) {
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+      // grid-template-columns: repeat(1,1fr);
+    }
 }
 
 .content-guitars{
-    display:flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+
+      @media (max-width:1800px) {
+        grid-template-columns: repeat(3,1fr);
+      }
+      @media (max-width:1500px) {
+        grid-template-columns: repeat(2,1fr);
+      }
+      @media (max-width:1000px) {
+        grid-template-columns: repeat(1,1fr);
+      }
 }
 
 

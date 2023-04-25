@@ -1,9 +1,16 @@
 
 .sort{
     position: relative;
+    @media (max-width:1300px) {
+        margin-bottom: 1rem;
+      }
 }
 
 .sort-label{
+
+    p{
+        font-weight: 700;
+    }
     span{
         color:var(--active-element);
         cursor: pointer;
