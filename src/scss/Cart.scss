@@ -1,5 +1,4 @@
 .cart{
-
     &-title{
         display:flex;
         justify-content: space-between;
@@ -27,11 +26,13 @@
         display:flex;
         flex-direction: column;
         width: 100%;
+        border-radius: 1rem;
     }
 
     &-summary{
         display:flex;
         flex-direction: column;
+        margin-top: 2rem;
     }
 
     &-summary-title{
@@ -88,14 +89,17 @@
     display:flex;
     justify-content: space-around;
     align-items: center;
+    border: 1px solid var(--ui-gray);
+    border-radius: 1rem;
+    margin-top: 2rem;
 
     &-name{
         display:flex;
         align-items: center;
 
         img{
-            width: 180px;
-            height: 240px;
+            width: 120px;
+            height: 160px;
             object-fit: contain;
         }
 

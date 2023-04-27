@@ -7,13 +7,22 @@ import Skeleton from "../components/Guitar/Skeleton";
 
 // import guitars from "./assets/data.json";
 
-
 const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [categoryId, setCategoryId] = useState(0);
+  const [sortType, setSortType] = useState({
+    name: "популярности (убыв)",
+    sort: "rating",
+  });
 
   useEffect(() => {
-    fetch("https://6444d6e4914c816083c0a023.mockapi.io/items")
+    setIsLoading(true);
+    fetch(
+      `https://6444d6e4914c816083c0a023.mockapi.io/items?${
+        categoryId > 0 ? `type=${categoryId}` : ""
+      }&sortBy=${sortType.sort.replace('-','')}&order=${sortType.sort.includes('-')? 'asc' : 'desc'}`,
+    )
       .then((res) => {
         return res.json();
       })
@@ -21,13 +30,17 @@ const Home = () => {
         setItems(json);
         setIsLoading(false);
       });
-  }, []);
+    window.scrollTo(0, 0);
+  }, [categoryId, sortType]);
 
   return (
     <>
       <div className="content-setting">
-        <Categories />
-        <Sort />
+        <Categories
+          value={categoryId}
+          onClickCategory={(id) => setCategoryId(id)}
+        />
+        <Sort value={sortType} onClickSort={(id) => setSortType(id)} />
       </div>
       <h2>Все гитары</h2>
       <div className="content-guitars">

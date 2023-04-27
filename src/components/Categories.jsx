@@ -1,8 +1,12 @@
-import { useState } from "react";
+// import { useState } from "react";
 import "../scss/components/Categories.scss";
 
-function Categories() {
-  const [activeIndex, setActiveIndex] = useState(0);
+function Categories({ value, onClickCategory }) {
+  // const [activeIndex, setActiveIndex] = useState(0);
+
+   // const onClickCategory = (index) => {
+  //   setActiveIndex(index);
+  // };
 
   const categories = [
     "Все",
@@ -13,21 +17,17 @@ function Categories() {
     "Укулеле",
   ];
 
-  const onClickCategory = (index) => {
-    setActiveIndex(index);
-  };
-
   return (
     <ul className="list-guitar">
-      {categories.map((value, index) => (
+      {categories.map((categoryName, index) => (
         <li
-        key={index}
+          key={index}
           onClick={() => {
             onClickCategory(index);
           }}
-          className={activeIndex === index ? "active" : ""}
+          className={value === index ? "active" : ""}
         >
-          {value}
+          {categoryName}
         </li>
       ))}
     </ul>

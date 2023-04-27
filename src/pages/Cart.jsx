@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "../scss/Cart.scss";
 
@@ -36,6 +37,42 @@ const Cart = () => {
           <h3>price</h3>
           <button className="btn-delete">X</button>
         </div>
+        <div className="item">
+          <div className="item-name">
+            <img
+              src="./img/guitar/guitar-class-1.jpg"
+              alt="img"
+            />
+            <h3>
+              title <p>settings</p>
+            </h3>
+          </div>
+          <div className="item-count">
+            <button className="count-btn">-</button>
+            <p>3</p>
+            <button className="count-btn">+</button>
+          </div>
+          <h3>price</h3>
+          <button className="btn-delete">X</button>
+        </div>
+        <div className="item">
+          <div className="item-name">
+            <img
+              src="./img/guitar/guitar-class-1.jpg"
+              alt="img"
+            />
+            <h3>
+              title <p>settings</p>
+            </h3>
+          </div>
+          <div className="item-count">
+            <button className="count-btn">-</button>
+            <p>3</p>
+            <button className="count-btn">+</button>
+          </div>
+          <h3>price</h3>
+          <button className="btn-delete">X</button>
+        </div>
       </div>
       <div className="cart-summary">
         <div className="cart-summary-title">
@@ -43,7 +80,7 @@ const Cart = () => {
           <p>Сумма заказа: <span>100000 рублей</span> </p>
         </div>
         <div className="cart-back">
-          <button className="btn-back">Вернуться назад</button>
+          <Link to="/" className="btn-back">Вернуться назад</Link>
           <button className="btn-pay">Оплатить сейчас</button>
         </div>
       </div>

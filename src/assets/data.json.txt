@@ -3,7 +3,7 @@
 [
     {
         "id" : 0,
-        "type": "class",
+        "type": "1",
         "name": "ROCKDALE MODERN CLASSIC 100-N 3/4",
         "cost": 6500,
         "rating": 4.4,
@@ -14,7 +14,7 @@
     },
     {
         "id" : 1,
-        "type": "class",
+        "type": "1",
         "name": "VESTON C-45A BK",
         "cost": 6620,
         "rating": 3.9,
@@ -25,7 +25,7 @@
     },
     {
         "id" : 2,
-        "type": "class",
+        "type": "1",
         "name": "CORT AC100-SG",
         "cost": 13620,
         "rating": 4.8,
@@ -36,7 +36,7 @@
     },
     {
         "id" : 3,
-        "type": "class",
+        "type": "1",
         "name": "IBANEZ GA6CE-AM",
         "cost": 29300,
         "rating": 4.6,
@@ -48,7 +48,7 @@
 
     {
         "id" : 4,
-        "type": "acoustic",
+        "type": "2",
         "name": "FENDER CD-60 BLACK",
         "cost": 24100,
         "rating": 4.7,
@@ -59,7 +59,7 @@
     },
     {
         "id" : 5,
-        "type": "acoustic",
+        "type": "2",
         "name": "FLIGHT F-230C NA",
         "cost": 11360,
         "rating": 4.9,
@@ -70,7 +70,7 @@
     },
     {
         "id" : 6,
-        "type": "acoustic",
+        "type": "2",
         "name": "VESTON F-38/BK",
         "cost": 6910,
         "rating": 4.1,
@@ -81,7 +81,7 @@
     },
     {
         "id" : 7,
-        "type": "acoustic",
+        "type": "2",
         "name": "CRAFTER D-7 /NC",
         "cost": 34610,
         "rating": 4.6,
@@ -92,7 +92,7 @@
     },
     {
         "id" : 8,
-        "type": "electro",
+        "type": "3",
         "name": "IBANEZ GRGR131EX-BKF",
         "cost": 31000,
         "rating": 4.9,
@@ -103,7 +103,7 @@
     },
     {
         "id" : 9,
-        "type": "electro",
+        "type": "3",
         "name": "FENDER SQUIER AFFINITY 2021 STRATOCASTER HH LRL OLYMPIC WHITE",
         "cost": 44000,
         "rating": 4.4,
@@ -114,7 +114,7 @@
     },
     {
         "id" : 10,
-        "type": "electro",
+        "type": "3",
         "name": "IBANEZ GRX70QA-TKS",
         "cost": 28900,
         "rating": 4.5,
@@ -125,7 +125,7 @@
     },
     {
         "id" : 11,
-        "type": "electro",
+        "type": "3",
         "name": "EPIPHONE LES PAUL SPECIAL SATIN E1 EBONY VINTAGE",
         "cost": 34000,
         "rating": 4.5,
@@ -137,7 +137,7 @@
 
     {
         "id" : 12,
-        "type": "bass",
+        "type": "4",
         "name": "ROCKDALE STARS PB BASS BLACK",
         "cost": 12200,
         "rating": 4.6,
@@ -148,7 +148,7 @@
     },
     {
         "id" : 13,
-        "type": "bass",
+        "type": "4",
         "name": "IBANEZ GSR200-BK23",
         "cost": 32000,
         "rating": 4.8,
@@ -159,7 +159,7 @@
     },
     {
         "id" : 14,
-        "type": "bass",
+        "type": "4",
         "name": "ROCKDALE STARS PB BASS WHITE",
         "cost": 12100,
         "rating": 4.2,
@@ -170,7 +170,7 @@
     },
     {
         "id" : 15,
-        "type": "bass",
+        "type": "4",
         "name": "IBANEZ GSR200-TR",
         "cost": 29200,
         "rating": 4.9,
@@ -182,7 +182,7 @@
 
     {
         "id" : 16,
-        "type": "ukulele",
+        "type": "5",
         "name": "FLIGHT GUT 350 SP/SAP",
         "cost": 8070,
         "rating": 4.6,
@@ -194,7 +194,7 @@
 
     {
         "id" : 17,
-        "type": "ukulele",
+        "type": "5",
         "name": "LAG TKT-8",
         "cost": 9640,
         "rating": 4.8,
