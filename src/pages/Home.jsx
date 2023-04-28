@@ -4,13 +4,15 @@ import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import Guitar from "../components/Guitar/Guitar";
 import Skeleton from "../components/Guitar/Skeleton";
+import Pagination from "../components/Pagination";
 
 // import guitars from "./assets/data.json";
 
-const Home = () => {
+const Home = ({ searchValue }) => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [categoryId, setCategoryId] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [sortType, setSortType] = useState({
     name: "популярности (убыв)",
     sort: "rating",
@@ -19,9 +21,13 @@ const Home = () => {
   useEffect(() => {
     setIsLoading(true);
     fetch(
-      `https://6444d6e4914c816083c0a023.mockapi.io/items?${
+      `https://6444d6e4914c816083c0a023.mockapi.io/items?page=${currentPage}&limit=4&${
         categoryId > 0 ? `type=${categoryId}` : ""
-      }&sortBy=${sortType.sort.replace('-','')}&order=${sortType.sort.includes('-')? 'asc' : 'desc'}`,
+      }${
+        searchValue ? `search=${searchValue}` : ""
+      }&sortBy=${sortType.sort.replace("-", "")}&order=${
+        sortType.sort.includes("-") ? "asc" : "desc"
+      }`
     )
       .then((res) => {
         return res.json();
@@ -31,7 +37,7 @@ const Home = () => {
         setIsLoading(false);
       });
     window.scrollTo(0, 0);
-  }, [categoryId, sortType]);
+  }, [categoryId, sortType, searchValue, currentPage]);
 
   return (
     <>
@@ -57,6 +63,7 @@ const Home = () => {
               />
             ))}
       </div>
+      <Pagination onChangePage={(number) => setCurrentPage(number)}/>
     </>
   );
 };

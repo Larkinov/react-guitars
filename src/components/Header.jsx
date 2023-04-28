@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import "../scss/components/Header.scss";
+import Search from "./Search";
 
-function Header() {
+function Header({setSearchValue, searchValue}) {
   return (
     <div>
       <div className="header-hiding"></div>
@@ -13,6 +14,7 @@ function Header() {
             <h3>REACT GUITARS</h3>
           </div>
         </Link>
+        <Search searchValue={searchValue} setSearchValue={setSearchValue}/>
         <Link to="/cart">
         <div className="basket">
           <p>&#8381;</p>
