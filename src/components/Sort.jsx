@@ -1,33 +1,34 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setSort } from "../redux/slices/filterSlice";
 import "../scss/components/Sort.scss";
 
-function Sort({value, onClickSort}) {
+const list = [
+  {name : "популярности (убыв)", sortProperty : "rating" }, 
+  {name : "популярности (возр)", sortProperty : "-rating" }, 
+  {name : "цене (убыв)", sortProperty : "cost" }, 
+  {name : "цене (возр)", sortProperty : "-cost" }, 
+  {name : "алфавиту", sortProperty : "-name" }, 
+]
 
-  // const [selected, setSelected] = useState(0);
-     // {"цене (возв)", "цене (убыв)", "алфавиту"];
-  // const sortName = list[value];
+function Sort() {
+
+  const dispatch = useDispatch();
+  const sort = useSelector(state=>state.filter.sort); 
 
   const [open, isOpen] = useState(false);
 
-  const onClickSelected = (index) => {
-    onClickSort(index);
+  const onClickSelected = (obj) => {
+    dispatch(setSort(obj));
     isOpen(false);
   };
-
-  const list = [
-    {name : "популярности (убыв)", sort : "rating" }, 
-    {name : "популярности (возр)", sort : "-rating" }, 
-    {name : "цене (убыв)", sort : "cost" }, 
-    {name : "цене (возр)", sort : "-cost" }, 
-    {name : "алфавиту", sort : "-name" }, 
-  ]
 
   return (
     <div className="sort">
       <div className="sort-label">
         <p>
           Сортировка по:
-          <span onClick={() => isOpen(!open)}> {value.name}</span>
+          <span onClick={() => isOpen(!open)}> {sort.name}</span>
         </p>
       </div>
       <div className="sort-popup">
@@ -36,7 +37,7 @@ function Sort({value, onClickSort}) {
             <p
               onClick={() => onClickSelected(obj)}
               className={
-                value.sort === obj.sort ? "popup-element-active" : "popup-element"
+                sort.sortProperty === obj.sortProperty ? "popup-element-active" : "popup-element"
               }
               key={index}
             >
@@ -45,16 +46,6 @@ function Sort({value, onClickSort}) {
           ))}
       </div>
     </div>
-    // <form>
-    //   <label htmlFor="sort-guitar">Сортировка по: </label>
-    //   <div>
-    //     <select name="sort" id="sort-guitar" className="select-sort">
-    //       {list.map((value,index)=> (
-    //         <option key={index}>{value}</option>
-    //       ))}
-    //     </select>
-    //   </div>
-    // </form>
   );
 }
 

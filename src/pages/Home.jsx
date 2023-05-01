@@ -1,5 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { setCategoryId } from '../redux/slices/filterSlice';
 
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
@@ -11,15 +13,19 @@ import { SearchContext } from "../App";
 // import guitars from "./assets/data.json";
 
 const Home = () => {
+
+  const {categoryId, sort} = useSelector((state)=>state.filter);
+  const dispatch = useDispatch();
+
   const {searchValue} = React.useContext(SearchContext);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [categoryId, setCategoryId] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortType, setSortType] = useState({
-    name: "популярности (убыв)",
-    sort: "rating",
-  });
+
+  const onChangeCategory = (id) => {
+    dispatch(setCategoryId(id));
+  }
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -28,8 +34,8 @@ const Home = () => {
         categoryId > 0 ? `type=${categoryId}` : ""
       }${
         searchValue ? `search=${searchValue}` : ""
-      }&sortBy=${sortType.sort.replace("-", "")}&order=${
-        sortType.sort.includes("-") ? "asc" : "desc"
+      }&sortBy=${sort.sortProperty.replace("-", "")}&order=${
+        sort.sortProperty.includes("-") ? "asc" : "desc"
       }`
     )
       .then((res) => {
@@ -40,16 +46,16 @@ const Home = () => {
         setIsLoading(false);
       });
     window.scrollTo(0, 0);
-  }, [categoryId, sortType, searchValue, currentPage]);
+  }, [categoryId, sort, searchValue, currentPage]);
 
   return (
     <>
       <div className="content-setting">
         <Categories
           value={categoryId}
-          onClickCategory={(id) => setCategoryId(id)}
+          onClickCategory={(id) => onChangeCategory(id)}
         />
-        <Sort value={sortType} onClickSort={(id) => setSortType(id)} />
+        <Sort/>
       </div>
       <h2>Все гитары</h2>
       <div className="content-guitars">

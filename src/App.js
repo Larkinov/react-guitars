@@ -1,5 +1,4 @@
-
-import React from 'react'
+import React from "react";
 import { Route, Routes, RouterProvider } from "react-router-dom";
 
 import "./scss/app.scss";
@@ -16,14 +15,11 @@ function App() {
 
   return (
     <div className="main">
-      <SearchContext.Provider value={{searchValue, setSearchValue}}>
-        <Header/>
+      <SearchContext.Provider value={{ searchValue, setSearchValue }}>
+        <Header />
         <div className="content">
           <Routes>
-            <Route
-              path="/"
-              element={<Home/>}
-            ></Route>
+            <Route path="/" element={<Home />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
