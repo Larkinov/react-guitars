@@ -1,22 +1,43 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import debounce from "lodash.debounce";
 import style from "./Search.module.scss";
 import { SearchContext } from "../../App";
 
 const Search = () => {
+  const [value, setValue] = useState("");
+  const {setSearchValue } = React.useContext(SearchContext);
+  const inputRef = useRef();
 
-  const {searchValue, setSearchValue} = React.useContext(SearchContext);
+  const onClickClear = () => {
+    setSearchValue("");
+    setValue("");
+    inputRef.current.focus();
+  };
+
+  const updateSearchValue = useCallback(
+    debounce((str) => {
+      setSearchValue(str);
+    }, 300),
+    [],
+  );
+
+  const onChangeInput = (event) => {
+    setValue(event.target.value);
+    updateSearchValue(event.target.value);
+  };
 
   return (
     <div className={style.root}>
       <input
-        value={searchValue}
-        onChange={(event) => setSearchValue(event.target.value)}
+        ref={inputRef}
+        value={value}
+        onChange={onChangeInput}
         placeholder="Поиск..."
         className={style.input}
       ></input>
-      {searchValue && (
+      {value && (
         <svg
-        onClick={()=> setSearchValue("")}
+          onClick={() => onClickClear()}
           className={style.iconClose}
           viewBox="0 -0.5 21 21"
           version="1.1"
@@ -27,9 +48,9 @@ const Search = () => {
           <g
             id="Page-1"
             stroke="none"
-            stroke-width="1"
+            strokeWidth="1"
             fill="none"
-            fill-rule="evenodd"
+            fillRule="evenodd"
           >
             <g
               id="Dribbble-Light-Preview"
