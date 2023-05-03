@@ -4,10 +4,25 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "../scss/Cart.scss";
 import CartItem from "../components/CartItem";
+import { clearItems } from "../redux/slices/cartSlice";
+import CartEmpty from "../components/CartEmpty";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.cart.items.find());
+  const {totalPrice, items} = useSelector((state) => state.cart);
+
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+
+
+  const onClickClear = () => {
+    if (window.confirm("Очистить корзину?")) {
+      dispatch(clearItems());
+    }
+  };
+
+  if(!totalPrice){
+    return <CartEmpty/>;
+  }
 
   return (
     <div className="cart">
@@ -21,20 +36,22 @@ const Cart = () => {
           />
           Корзина
         </h1>
-        <div className="cart-clear">Очистить корзину</div>
+        <div className="cart-clear" onClick={onClickClear}>Очистить корзину</div>
       </div>
       <div className="cart-content">
-        <CartItem />
-        <CartItem />
-        <CartItem />
+        {
+          items.map((item) => (
+            <CartItem key={item.id} {...item}/>
+          ))
+        }
       </div>
       <div className="cart-summary">
         <div className="cart-summary-title">
           <p>
-            Всего товаров: <span>10 шт.</span>
+            Всего товаров: <span>{totalCount} шт.</span>
           </p>
           <p>
-            Сумма заказа: <span>100000 рублей</span>{" "}
+            Сумма заказа: <span>{totalPrice} рублей</span>
           </p>
         </div>
         <div className="cart-back">

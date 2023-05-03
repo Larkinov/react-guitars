@@ -6,7 +6,7 @@ import Search from "./Search";
 function Header() {
 
   const {items, totalPrice} = useSelector(state=>state.cart);
-
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
   return (
     <div>
       <div className="header-hiding"></div>
@@ -24,7 +24,7 @@ function Header() {
           <p>{totalPrice} &#8381;</p>
           <p> | </p>
           <img src="img/basket.svg" alt="basket" width="18px" />
-          <p>{items.length}</p>
+          <p>{totalCount}</p>
         </div>
         </Link>
       </div>
