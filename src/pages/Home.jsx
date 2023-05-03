@@ -1,8 +1,7 @@
 import React, { useRef } from "react";
-import axios from "axios";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setCategoryId,
@@ -17,6 +16,8 @@ import Skeleton from "../components/Guitar/Skeleton";
 import Pagination from "../components/Pagination";
 import { SearchContext } from "../App";
 import { list } from "../components/Sort";
+import { fetchGuitars } from "../redux/slices/guitarsSlice";
+import ErrorUI from "../components/ErrorUI";
 
 // import guitars from "./assets/data.json";
 
@@ -27,12 +28,11 @@ const Home = () => {
   const isMounted = useRef(false);
 
   const { searchValue } = React.useContext(SearchContext);
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   const { categoryId, sort, currentPage } = useSelector(
     (state) => state.filter
   );
+  const { items, status } = useSelector((state) => state.guitar);
 
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
@@ -42,22 +42,20 @@ const Home = () => {
     dispatch(setCurrentPage(number));
   };
 
-  const fetchGuitars = () => {
-    setIsLoading(true);
-    axios
-      .get(
-        `https://6444d6e4914c816083c0a023.mockapi.io/items?page=${currentPage}&limit=4&${
-          categoryId > 0 ? `type=${categoryId}` : ""
-        }${
-          searchValue ? `search=${searchValue}` : ""
-        }&sortBy=${sort.sortProperty.replace("-", "")}&order=${
-          sort.sortProperty.includes("-") ? "asc" : "desc"
-        }`
-      )
-      .then((response) => {
-        setItems(response.data);
-        setIsLoading(false);
-      });
+  const getGuitars = async () => {
+    const sortBy = sort.sortProperty.replace("-", "");
+    const order = sort.sortProperty.includes("-") ? "asc" : "desc";
+    const search = searchValue ? `search=${searchValue}` : "";
+    const category = categoryId > 0 ? `type=${categoryId}` : "";
+    dispatch(
+      fetchGuitars({
+        sortBy,
+        order,
+        search,
+        category,
+        currentPage,
+      })
+    );
   };
 
   //если изменили параметры и был первый рендер
@@ -97,12 +95,27 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     if (!isSearch.current) {
-      fetchGuitars();
+      getGuitars();
     }
 
     isSearch.current = false;
   }, [categoryId, sort, searchValue, currentPage]);
 
+  const guitarsUI = items.map((obj) => (
+    <Guitar
+      id={obj.id}
+      key={obj.id}
+      name={obj.name}
+      cost={obj.cost}
+      urlImage={obj.urlImage}
+      gString={obj.guitarString}
+      gCase={obj.guitarCase}
+    />
+  ));
+
+  const skeletons = [...new Array(6)].map((_, index) => (
+    <Skeleton key={index} />
+  ));
   return (
     <>
       <div className="content-setting">
@@ -113,21 +126,14 @@ const Home = () => {
         <Sort />
       </div>
       <h2>Все гитары</h2>
-      <div className="content-guitars">
-        {isLoading
-          ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
-          : items.map((obj) => (
-              <Guitar
-                id = {obj.id}
-                key={obj.id}
-                name={obj.name}
-                cost={obj.cost}
-                urlImage={obj.urlImage}
-                gString={obj.guitarString}
-                gCase={obj.guitarCase}
-              />
-            ))}
-      </div>
+      {status === "error" ? (
+        <ErrorUI/>
+      ) : (
+        <div className="content-guitars">
+          {status === "loading" ? skeletons : guitarsUI}
+        </div>
+      )}
+
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </>
   );
