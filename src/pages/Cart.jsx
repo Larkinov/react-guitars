@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import "../scss/Cart.scss";
+import CartItem from "../components/CartItem";
 
 const Cart = () => {
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.cart.items.find());
+
   return (
     <div className="cart">
       <div className="cart-title">
@@ -19,68 +24,23 @@ const Cart = () => {
         <div className="cart-clear">Очистить корзину</div>
       </div>
       <div className="cart-content">
-        <div className="item">
-          <div className="item-name">
-            <img
-              src="./img/guitar/guitar-class-1.jpg"
-              alt="img"
-            />
-            <h3>
-              title <p>settings</p>
-            </h3>
-          </div>
-          <div className="item-count">
-            <button className="count-btn">-</button>
-            <p>3</p>
-            <button className="count-btn">+</button>
-          </div>
-          <h3>price</h3>
-          <button className="btn-delete">X</button>
-        </div>
-        <div className="item">
-          <div className="item-name">
-            <img
-              src="./img/guitar/guitar-class-1.jpg"
-              alt="img"
-            />
-            <h3>
-              title <p>settings</p>
-            </h3>
-          </div>
-          <div className="item-count">
-            <button className="count-btn">-</button>
-            <p>3</p>
-            <button className="count-btn">+</button>
-          </div>
-          <h3>price</h3>
-          <button className="btn-delete">X</button>
-        </div>
-        <div className="item">
-          <div className="item-name">
-            <img
-              src="./img/guitar/guitar-class-1.jpg"
-              alt="img"
-            />
-            <h3>
-              title <p>settings</p>
-            </h3>
-          </div>
-          <div className="item-count">
-            <button className="count-btn">-</button>
-            <p>3</p>
-            <button className="count-btn">+</button>
-          </div>
-          <h3>price</h3>
-          <button className="btn-delete">X</button>
-        </div>
+        <CartItem />
+        <CartItem />
+        <CartItem />
       </div>
       <div className="cart-summary">
         <div className="cart-summary-title">
-          <p>Всего товаров: <span>10 шт.</span></p>
-          <p>Сумма заказа: <span>100000 рублей</span> </p>
+          <p>
+            Всего товаров: <span>10 шт.</span>
+          </p>
+          <p>
+            Сумма заказа: <span>100000 рублей</span>{" "}
+          </p>
         </div>
         <div className="cart-back">
-          <Link to="/" className="btn-back">Вернуться назад</Link>
+          <Link to="/" className="btn-back">
+            Вернуться назад
+          </Link>
           <button className="btn-pay">Оплатить сейчас</button>
         </div>
       </div>

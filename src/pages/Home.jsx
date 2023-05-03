@@ -118,6 +118,7 @@ const Home = () => {
           ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
           : items.map((obj) => (
               <Guitar
+                id = {obj.id}
                 key={obj.id}
                 name={obj.name}
                 cost={obj.cost}

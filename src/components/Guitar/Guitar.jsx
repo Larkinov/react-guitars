@@ -1,14 +1,32 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../../redux/slices/cartSlice";
 import "../../scss/components/Guitar.scss";
 
-function Guitar({ name, cost, urlImage, gString, gCase }) {
+const typeString = ["Без струн","Комп. струн"];
+const typeCase = ["Без чехла","С чехлом"];
+
+function Guitar({ id, name, cost, urlImage, gString, gCase }) {
+  const dispatch = useDispatch();
+  const cartItem = useSelector(state => state.cart.items.find(obj => obj.id ===id));
+
+  const addedCount = cartItem ? cartItem.count : 0;
+
   const [guitarCount, setGuitarCount] = useState(0);
   const [guitarString, setGuitarString] = useState(0);
   const [guitarCase, setGuitarCase] = useState(0);
 
-  const setCount = (name) => {
-    if (name === "+") setGuitarCount(guitarCount + 1);
-    if (name === "-" && guitarCount != 0) setGuitarCount(guitarCount - 1);
+  const onClickAdd = () => {
+    setGuitarCount(guitarCount + 1);
+    const item = {
+      id,
+      name,
+      cost,
+      urlImage,
+      typeOne: typeString[guitarString],
+      typeTwo: typeCase[guitarCase],
+    };
+    dispatch(addItem(item));
   };
 
   return (
@@ -45,12 +63,8 @@ function Guitar({ name, cost, urlImage, gString, gCase }) {
       </div>
       <div className="add">
         <p>от {cost} Р</p>
-        <button className="count-btn" onClick={() => setCount("+")}>
-          +
-        </button>
-        <p>{guitarCount}</p>
-        <button className="count-btn" onClick={() => setCount("-")}>
-          −
+        <button className="count-btn" onClick={() => onClickAdd()}>
+          <p>Добавить: {guitarCount}</p>
         </button>
       </div>
     </div>

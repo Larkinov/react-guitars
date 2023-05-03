@@ -1,8 +1,12 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../scss/components/Header.scss";
 import Search from "./Search";
 
 function Header() {
+
+  const {items, totalPrice} = useSelector(state=>state.cart);
+
   return (
     <div>
       <div className="header-hiding"></div>
@@ -17,9 +21,10 @@ function Header() {
         <Search/>
         <Link to="/cart">
         <div className="basket">
-          <p>&#8381;</p>
-          <p>|</p>
+          <p>{totalPrice} &#8381;</p>
+          <p> | </p>
           <img src="img/basket.svg" alt="basket" width="18px" />
+          <p>{items.length}</p>
         </div>
         </Link>
       </div>
