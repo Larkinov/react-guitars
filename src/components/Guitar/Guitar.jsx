@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../redux/slices/cartSlice";
+import { Link } from "react-router-dom";
 import "../../scss/components/Guitar.scss";
 
-const typeString = ["Без струн","Комп. струн"];
-const typeCase = ["Без чехла","С чехлом"];
+const typeString = ["Без струн", "Комп. струн"];
+const typeCase = ["Без чехла", "С чехлом"];
 
 function Guitar({ id, name, cost, urlImage, gString, gCase }) {
   const dispatch = useDispatch();
-  const cartItem = useSelector(state => state.cart.items.find(obj => obj.id ===id));
+  const cartItem = useSelector((state) =>
+    state.cart.items.find((obj) => obj.id === id)
+  );
 
   const addedCount = cartItem ? cartItem.count : 0;
 
@@ -31,7 +34,9 @@ function Guitar({ id, name, cost, urlImage, gString, gCase }) {
 
   return (
     <div className="guitar">
-      <img src={urlImage} alt="" className="guitar-image" />
+      <Link to={`/guitar/${id}`}>
+        <img src={urlImage} alt="" className="guitar-image" />
+      </Link>
       <h3>{name}</h3>
       <div className="additional">
         <ul className="list-additional">
@@ -64,7 +69,7 @@ function Guitar({ id, name, cost, urlImage, gString, gCase }) {
       <div className="add">
         <p>от {cost} Р</p>
         <button className="count-btn" onClick={() => onClickAdd()}>
-          <p>Добавить: {guitarCount}</p>
+          <p>Добавить: {addedCount}</p>
         </button>
       </div>
     </div>

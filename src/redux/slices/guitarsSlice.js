@@ -3,12 +3,11 @@ import axios from "axios";
 
 export const fetchGuitars = createAsyncThunk(
   "guitar/fetchGuitarsStatus",
-  async (params) => {
+  async (params,thunkApi) => {
     const { sortBy, order, category, search, currentPage } = params;
     const response = await axios.get(
       `https://6444d6e4914c816083c0a023.mockapi.io/items?page=${currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
     );
-
     return response.data;
   }
 );

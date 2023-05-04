@@ -14,7 +14,6 @@ import Sort from "../components/Sort";
 import Guitar from "../components/Guitar/Guitar";
 import Skeleton from "../components/Guitar/Skeleton";
 import Pagination from "../components/Pagination";
-import { SearchContext } from "../App";
 import { list } from "../components/Sort";
 import { fetchGuitars } from "../redux/slices/guitarsSlice";
 import ErrorUI from "../components/ErrorUI";
@@ -26,10 +25,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const isSearch = useRef(false);
   const isMounted = useRef(false);
-
-  const { searchValue } = React.useContext(SearchContext);
-
-  const { categoryId, sort, currentPage } = useSelector(
+  const { categoryId, sort, currentPage, searchValue } = useSelector(
     (state) => state.filter
   );
   const { items, status } = useSelector((state) => state.guitar);
