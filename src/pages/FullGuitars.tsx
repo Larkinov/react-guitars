@@ -4,16 +4,21 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 
-const FullGuitars = () => {
+const FullGuitars: React.FC = () => {
   const params = useParams();
-  const [guitar, setGuitar] = useState("");
+  const [guitar, setGuitar] = useState<{
+    imageUrl: string;
+    name: string;
+    price: string;
+  }>();
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchGuitars() {
       try {
         const { data } = await axios.get(
-          "https://6444d6e4914c816083c0a023.mockapi.io/items/" + params.id);
+          "https://6444d6e4914c816083c0a023.mockapi.io/items/" + params.id
+        );
         setGuitar(data);
       } catch (error) {
         alert("Ошибка при получении товара!");
@@ -24,7 +29,7 @@ const FullGuitars = () => {
   }, []);
 
   if (!guitar) {
-    return "Загрузка...";
+    return <>"Загрузка..."</>;
   }
 
   return (
