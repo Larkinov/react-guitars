@@ -7,7 +7,16 @@ import "../../scss/components/Guitar.scss";
 const typeString = ["Без струн", "Комп. струн"];
 const typeCase = ["Без чехла", "С чехлом"];
 
-function Guitar({ id, name, cost, urlImage, gString, gCase }) {
+type GuitarProps = {
+  id:string;
+  name:string;
+  cost:number;
+  urlImage:string;
+  gString:string[];
+  gCase:string[];
+}
+
+const Guitar:React.FC<GuitarProps> = ({ id, name, cost, urlImage, gString, gCase }) => {
   const dispatch = useDispatch();
   const cartItem = useSelector((state) =>
     state.cart.items.find((obj) => obj.id === id)

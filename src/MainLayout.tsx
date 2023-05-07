@@ -4,7 +4,7 @@ import "./scss/app.scss";
 import Header from "./components/Header";
 
 
-const MainLayout = () => {
+const MainLayout: React.FC = () => {
   return (
     <div className="main">
       <Header />

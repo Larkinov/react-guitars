@@ -18,9 +18,8 @@ import { list } from "../components/Sort";
 import { fetchGuitars } from "../redux/slices/guitarsSlice";
 import ErrorUI from "../components/ErrorUI";
 
-// import guitars from "./assets/data.json";
 
-const Home = () => {
+const Home:React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isSearch = useRef(false);
@@ -30,12 +29,12 @@ const Home = () => {
   );
   const { items, status } = useSelector((state) => state.guitar);
 
-  const onChangeCategory = (id) => {
+  const onChangeCategory = (id:number) => {
     dispatch(setCategoryId(id));
   };
 
-  const onChangePage = (number) => {
-    dispatch(setCurrentPage(number));
+  const onChangePage = (page:number) => {
+    dispatch(setCurrentPage(page));
   };
 
   const getGuitars = async () => {
@@ -44,6 +43,8 @@ const Home = () => {
     const search = searchValue ? `search=${searchValue}` : "";
     const category = categoryId > 0 ? `type=${categoryId}` : "";
     dispatch(
+
+      //@ts-ignore
       fetchGuitars({
         sortBy,
         order,
@@ -97,7 +98,7 @@ const Home = () => {
     isSearch.current = false;
   }, [categoryId, sort, searchValue, currentPage]);
 
-  const guitarsUI = items.map((obj) => (
+  const guitarsUI = items.map((obj:any) => (
     <Guitar
       id={obj.id}
       key={obj.id}
@@ -117,7 +118,7 @@ const Home = () => {
       <div className="content-setting">
         <Categories
           value={categoryId}
-          onClickCategory={(id) => onChangeCategory(id)}
+          onClickCategory={(id:number) => onChangeCategory(id)}
         />
         <Sort />
       </div>

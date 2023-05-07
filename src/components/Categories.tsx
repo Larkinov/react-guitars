@@ -1,13 +1,12 @@
-// import { useState } from "react";
 import "../scss/components/Categories.scss";
 
-function Categories({ value, onClickCategory }) {
-  // const [activeIndex, setActiveIndex] = useState(0);
 
-   // const onClickCategory = (index) => {
-  //   setActiveIndex(index);
-  // };
+type CategoriesProps = {
+  value:number;
+  onClickCategory:any;
+}
 
+const Categories:React.FC<CategoriesProps> = ({ value, onClickCategory }) => {
   const categories = [
     "Все",
     "Классические",
