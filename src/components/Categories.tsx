@@ -3,18 +3,20 @@ import "../scss/components/Categories.scss";
 
 type CategoriesProps = {
   value:number;
-  onClickCategory:any;
+  onClickCategory:(i:number) => void;
 }
 
+const categories = [
+  "Все",
+  "Классические",
+  "Акустические",
+  "Электрогитары",
+  "Бас-гитары",
+  "Укулеле",
+];
+
 const Categories:React.FC<CategoriesProps> = ({ value, onClickCategory }) => {
-  const categories = [
-    "Все",
-    "Классические",
-    "Акустические",
-    "Электрогитары",
-    "Бас-гитары",
-    "Укулеле",
-  ];
+  
 
   return (
     <ul className="list-guitar">

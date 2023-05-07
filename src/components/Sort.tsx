@@ -1,12 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../redux/slices/filterSlice";
 import "../scss/components/Sort.scss";
 
-
 type SortItem = {
-  name:string;
-  sortProperty:string;
+  name: string;
+  sortProperty: string;
+};
+
+type PopupClick = MouseEvent & {
+  path: Node[];
 };
 
 export const list: SortItem[] = [
@@ -24,14 +27,14 @@ function Sort() {
 
   const [open, isOpen] = useState(false);
 
-  const onClickSelected = (obj:SortItem) => {
+  const onClickSelected = (obj: SortItem) => {
     dispatch(setSort(obj));
     isOpen(false);
   };
 
   useEffect(() => {
-    const handleClickOutside = (event:any) => {
-      if (!event.composedPath().includes(sortRef.current)) {
+    const handleClickOutside = (event: MouseEvent) => {      
+      if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
         isOpen(false);
       }
     };
