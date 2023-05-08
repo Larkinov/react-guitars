@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setSort } from "../redux/slices/filterSlice";
+import {SortPropertyEnum, setSort } from "../redux/slices/filterSlice";
 import "../scss/components/Sort.scss";
+import { RootState } from "../redux/store";
 
 type SortItem = {
   name: string;
-  sortProperty: string;
+  sortProperty: SortPropertyEnum;
 };
 
 type PopupClick = MouseEvent & {
@@ -13,16 +14,16 @@ type PopupClick = MouseEvent & {
 };
 
 export const list: SortItem[] = [
-  { name: "популярности (убыв)", sortProperty: "rating" },
-  { name: "популярности (возр)", sortProperty: "-rating" },
-  { name: "цене (убыв)", sortProperty: "cost" },
-  { name: "цене (возр)", sortProperty: "-cost" },
-  { name: "алфавиту", sortProperty: "-name" },
+  { name: "популярности (убыв)", sortProperty: SortPropertyEnum.RATING_DESC },
+  { name: "популярности (возр)", sortProperty: SortPropertyEnum.RATING_ASC},
+  { name: "цене (убыв)", sortProperty: SortPropertyEnum.COST_DESC },
+  { name: "цене (возр)", sortProperty: SortPropertyEnum.COST_ASC },
+  { name: "алфавиту", sortProperty: SortPropertyEnum.NAME_ASC},
 ];
 
-function Sort() {
+function SortPopup() {
   const dispatch = useDispatch();
-  const sort = useSelector((state) => state.filter.sort);
+  const sort = useSelector((state:RootState) => state.filter.sort);
   const sortRef = useRef<HTMLDivElement>(null);
 
   const [open, isOpen] = useState(false);
@@ -75,4 +76,4 @@ function Sort() {
   );
 }
 
-export default Sort;
+export default SortPopup;

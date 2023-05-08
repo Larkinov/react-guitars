@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+//@ts-ignore
 import debounce from "lodash.debounce";
 import style from "./Search.module.scss";
 import { setSearchValue } from "../../redux/slices/filterSlice";

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../redux/slices/cartSlice";
+import { CartItem, addItem } from "../../redux/slices/cartSlice";
 import { Link } from "react-router-dom";
 import "../../scss/components/Guitar.scss";
+import { RootState } from "../../redux/store";
 
 const typeString = ["Без струн", "Комп. струн"];
 const typeCase = ["Без чехла", "С чехлом"];
@@ -18,7 +19,7 @@ type GuitarProps = {
 
 const Guitar:React.FC<GuitarProps> = ({ id, name, cost, urlImage, gString, gCase }) => {
   const dispatch = useDispatch();
-  const cartItem = useSelector((state) =>
+  const cartItem = useSelector((state:RootState) =>
     state.cart.items.find((obj) => obj.id === id)
   );
 
@@ -30,13 +31,14 @@ const Guitar:React.FC<GuitarProps> = ({ id, name, cost, urlImage, gString, gCase
 
   const onClickAdd = () => {
     setGuitarCount(guitarCount + 1);
-    const item = {
+    const item:CartItem = {
       id,
       name,
       cost,
       urlImage,
-      typeOne: typeString[guitarString],
-      typeTwo: typeCase[guitarCase],
+      gString: typeString[guitarString],
+      gCase: typeCase[guitarCase],
+      count:0
     };
     dispatch(addItem(item));
   };
