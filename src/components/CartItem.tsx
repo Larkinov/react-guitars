@@ -40,7 +40,7 @@ const CartItemBlock:React.FC<CartItemProps> = ({ id, name, typeOne, typeTwo, cos
           </h3>
         </div>
         <div className="item-count">
-          <button className="count-btn" onClick={onClickMinus}>
+          <button disabled = {count===1} className="count-btn" onClick={onClickMinus}>
             -
           </button>
           <p>{count}</p>

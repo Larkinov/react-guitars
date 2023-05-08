@@ -1,10 +1,9 @@
-import React, { useRef } from "react";
+import React, { useCallback, useRef } from "react";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector} from "react-redux";
 import {
-  FilterSliceState,
   setCategoryId,
   setCurrentPage,
   setFilters,
@@ -31,9 +30,9 @@ const Home:React.FC = () => {
   );
   const { items, status } = useSelector((state:RootState) => state.guitar);
 
-  const onChangeCategory = (id:number) => {
+  const onChangeCategory = useCallback((id:number) => {
     dispatch(setCategoryId(id));
-  };
+  },[]);
 
   const onChangePage = (page:number) => {
     dispatch(setCurrentPage(page));
@@ -121,7 +120,7 @@ const Home:React.FC = () => {
           value={categoryId}
           onClickCategory={(id:number) => onChangeCategory(id)}
         />
-        <Sort />
+        <Sort value={sort}/>
       </div>
       <h2>Все гитары</h2>
       {status === "error" ? (

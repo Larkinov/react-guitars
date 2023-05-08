@@ -1,3 +1,4 @@
+import React from "react";
 import "../scss/components/Categories.scss";
 
 
@@ -15,7 +16,7 @@ const categories = [
   "Укулеле",
 ];
 
-const Categories:React.FC<CategoriesProps> = ({ value, onClickCategory }) => {
+const Categories:React.FC<CategoriesProps> = React.memo(({ value, onClickCategory }) => {
   
 
   return (
@@ -33,6 +34,6 @@ const Categories:React.FC<CategoriesProps> = ({ value, onClickCategory }) => {
       ))}
     </ul>
   );
-}
+})
 
 export default Categories;
