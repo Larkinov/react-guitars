@@ -9,14 +9,9 @@ import {
   setFilters,
 } from "../redux/slices/filterSlice";
 
-import Categories from "../components/Categories";
-import Sort from "../components/Sort";
-import Guitar from "../components/Guitar/Guitar";
-import Skeleton from "../components/Guitar/Skeleton";
-import Pagination from "../components/Pagination";
+import {Categories,Sort, Guitar, Skeleton,Pagination,ErrorUI} from "../components";
 import { list } from "../components/Sort";
 import { FetchGuitarsArgs, fetchGuitars } from "../redux/slices/guitarsSlice";
-import ErrorUI from "../components/ErrorUI";
 import { RootState, useAppDispatch } from "../redux/store";
 
 
