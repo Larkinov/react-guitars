@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import "./scss/app.scss";
 import Home from "./pages/Home";
 import MainLayout from "./MainLayout";
+import Loading from "./components/Loading";
+import Info from "./pages/Info";
 
 const Cart = React.lazy(() => import(/* webpackChunkName: "Cart"*/"./pages/Cart"));
 const FullGuitars = React.lazy(() => import(/* webpackChunkName: "FullGuitars"*/"./pages/FullGuitars"));
@@ -16,7 +18,7 @@ function App() {
         <Route
           path="cart"
           element={
-            <Suspense fallback={<div>Идет загрузка...</div>}>
+            <Suspense fallback={<Loading/>}>
               <Cart />
             </Suspense>
           }
@@ -24,15 +26,23 @@ function App() {
         <Route
           path="guitar/:id"
           element={
-            <Suspense fallback={<div>Идет загрузка...</div>}>
+            <Suspense fallback={<Loading/>}>
               <FullGuitars />
+            </Suspense>
+          }
+        ></Route>
+        <Route
+          path="info"
+          element={
+            <Suspense fallback={<Loading/>}>
+              <Info/>
             </Suspense>
           }
         ></Route>
         <Route
           path="*"
           element={
-            <Suspense fallback={<div>Идет загрузка...</div>}>
+            <Suspense fallback={<Loading/>}>
               <NotFound />
             </Suspense>
           }

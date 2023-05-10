@@ -23,6 +23,7 @@
 
 body{
   overflow-x: hidden;
+  background-color: var(--main-color);
 }
 
 .main{
@@ -38,8 +39,6 @@ body{
     margin-top: 7vh;
     padding: 2rem;
     background-color: white;
-    border-radius: 1rem;
-
     @media (max-width:900px) {
       margin-top: 11vh;
     }

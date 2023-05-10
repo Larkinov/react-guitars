@@ -4,6 +4,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 import "../scss/FullGuitar.scss";
+import Loading from "../components/Loading";
 
 const FullGuitars: React.FC = () => {
   const params = useParams();
@@ -30,7 +31,7 @@ const FullGuitars: React.FC = () => {
   }, []);
 
   if (!guitar) {
-    return <>"Загрузка..."</>;
+    return <Loading/>;
   }
 
   return (
