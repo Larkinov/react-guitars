@@ -27,3 +27,19 @@
         opacity: 0.8;
     }
 }
+
+@media (max-width:900px) {
+    .root{
+        position: absolute;
+        margin-top:3.2rem;
+    }
+    .input{
+        width: 300px;
+    }
+}
+
+@media (max-width:500px) {
+    .input{
+        width: 200px;
+    }
+}

@@ -29,9 +29,9 @@ const Cart: React.FC = () => {
       <div className="cart-title">
         <h1>
           <img
+            className="cart-title-image"
             src="./img/basket.svg"
             alt="cart"
-            width="40px"
             style={{ marginRight: "0.5rem" }}
           />
           Корзина

@@ -30,6 +30,7 @@ const Guitar:React.FC<GuitarProps> = ({ id, name, cost, urlImage, gString, gCase
   const [guitarCase, setGuitarCase] = useState(0);
 
   const onClickAdd = () => {
+    
     setGuitarCount(guitarCount + 1);
     const item:CartItem = {
       id,

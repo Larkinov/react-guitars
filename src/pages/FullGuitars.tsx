@@ -1,14 +1,16 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+
+import "../scss/FullGuitar.scss";
 
 const FullGuitars: React.FC = () => {
   const params = useParams();
   const [guitar, setGuitar] = useState<{
-    imageUrl: string;
+    urlImage: string;
     name: string;
-    price: string;
+    cost: string;
   }>();
   const navigate = useNavigate();
 
@@ -32,11 +34,34 @@ const FullGuitars: React.FC = () => {
   }
 
   return (
-    <div>
-      <h2>{guitar.name}</h2>
-      <h2>{guitar.price}</h2>
-      <img src="" alt="ss" />
-    </div>
+    <>
+      <div className="fullGuitar">
+        <div className="fullGuitar-box">
+          <img
+            src={"/" + guitar.urlImage}
+            alt="ImageProduct"
+            className="fullGuitar-img"
+          />
+          <h3>Цена: {guitar.cost} рублей</h3>
+        </div>
+        <div className="fullGuitar-description">
+          <h1>{guitar.name}</h1>
+          <p>
+            {" "}
+            Гитара представляет собой корпус с длинной шейкой, называемой
+            «грифом». Лицевая, рабочая сторона грифа — плоская либо слегка
+            выпуклая. Вдоль неё параллельно натянуты струны, закреплённые одним
+            концом на подставке корпуса, другим — на колковой коробке на
+            окончании грифа. На подставке корпуса струны привязываются или
+            крепятся неподвижно при помощи барашков, на головке грифа с помощью
+            колкового механизма, позволяющего регулировать натяжение струн.
+          </p>
+        </div>
+      </div>
+      <Link to="/" className="btn-back">
+        Вернуться назад
+      </Link>
+    </>
   );
 };
 

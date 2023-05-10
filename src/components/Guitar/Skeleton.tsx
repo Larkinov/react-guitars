@@ -1,5 +1,6 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
+import "../../scss/components/Guitar.scss";
 
 const Skeleton:React.FC = (props) => (
   <ContentLoader 
@@ -10,6 +11,7 @@ const Skeleton:React.FC = (props) => (
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
     {...props}
+    className="Skeleton"
   >
     <rect x="0" y="264" rx="0" ry="0" width="320" height="100" /> 
     <rect x="0" y="375" rx="36" ry="36" width="320" height="115" /> 

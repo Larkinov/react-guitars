@@ -5,18 +5,20 @@ import { CartItem, addItem, minusItem, removeItem } from "../redux/slices/cartSl
 type CartItemProps = {
   id:string;
   name:string;
-  typeOne:string;
-  typeTwo:string;
+  gString:string;
+  gCase:string;
   cost:number;
   count:number;
   urlImage:string;
 }
 
-const CartItemBlock:React.FC<CartItemProps> = ({ id, name, typeOne, typeTwo, cost, count, urlImage }) => {
+const CartItemBlock:React.FC<CartItemProps> = ({ id, name, gString, gCase, cost, count, urlImage }) => {
   const dispatch = useDispatch();
 
   const onClickPlus = () => {
     dispatch(addItem({ id } as CartItem));
+    console.log(gString);
+    
   };
   const onClickMinus = () => {
     dispatch(minusItem(id));
@@ -35,7 +37,7 @@ const CartItemBlock:React.FC<CartItemProps> = ({ id, name, typeOne, typeTwo, cos
           <h3>
             {name}
             <p>
-              {typeOne} {typeTwo}
+              {gString} {gCase}
             </p>
           </h3>
         </div>

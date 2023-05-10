@@ -43,3 +43,37 @@
     width: 12rem;
     cursor: pointer;
 }
+
+@media (max-width:900px) {
+    .header{
+        height: 7.5rem;
+        align-items: start;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width:650px) {
+    .basket{
+        width: 9rem;
+        font-size: 14px;
+        padding: 0.4rem 0.5rem;
+        margin-top: 0.2rem;
+    }
+
+    .header-logo{
+        font-size: 14px;
+    }
+}
+
+@media (max-width:500px) {
+    .basket{
+        width: 8rem;
+        font-size: 12px;
+        padding: 0.3rem 0.5rem;
+        margin-top: 0.3rem;
+    }
+
+    .header-logo{
+        font-size: 12px;
+    }
+}

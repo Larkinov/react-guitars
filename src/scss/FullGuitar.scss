@@ -1,0 +1,171 @@
+.fullGuitar{
+    text-align: center;
+    width: 60%;
+    padding:1rem;
+    display: flex;
+    justify-content: center;
+    border: 1px solid var(--ui-gray);
+    box-shadow: 0px 0px 2px lightgray;
+    border-radius: 2rem;
+    margin: 2rem auto;
+    
+    &-box{
+        text-align: center;
+        margin-right: 2rem;
+        width: 40%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        h3{
+            margin-top: 1rem;
+        }
+    }
+
+    &-img{
+        width: 240px;
+        height: 320px;
+        object-fit: contain;
+    }
+
+    &-description{
+        width: 60%;
+        display:flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        margin-top: 2rem;
+        padding:1rem;
+
+        h1{
+            margin-bottom: 1rem;
+        }
+
+        p{
+            text-align: justify;
+        }
+    }
+}
+
+.btn-back{
+    cursor: pointer;
+    padding:0.5rem;
+    border-radius: 1rem;
+    background-color: var(--ui-gray);
+    transition: all 0.15s ease-in;
+    border: none;
+
+    &:hover{
+        background-color: var(--ui-gray-hover);
+    }
+    &:active{
+        background-color: var(--ui-gray-active);
+    }
+}
+
+@media (max-width:1600px) {
+
+    .fullGuitar{
+        width: 70%;
+    }
+
+    h1{
+        font-size: 26px;
+    }
+}
+
+@media (max-width:1300px) {
+
+    .fullGuitar{
+        width: 80%;
+    }
+
+    h1{
+        font-size: 22px;
+    }
+}
+
+@media (max-width:900px) {
+
+    .fullGuitar{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+
+        &-box{
+            margin-right: 0rem;
+            width: 100%;
+
+            h3{
+                margin-top:0.5rem;
+                font-size: 16px;
+            }
+        }
+    
+        &-img{
+            width:300px;
+            height: 300px;
+            padding: 1rem 0;
+            
+            border: 1px solid var(--ui-gray);
+            border-radius: 1rem;
+        }
+    
+        &-description{
+            width: 100%;
+            margin-top: 0.5rem;
+            padding:1rem;
+    
+            h1{
+                margin-bottom: 1rem;
+            }
+    
+            p{
+                text-align: justify;
+            }
+        }
+    }
+
+    h1{
+        font-size: 22px;
+    }
+}
+
+@media (max-width:600px){
+    .fullGuitar{
+        &-box{
+            h3{
+                margin-top:0.5rem;
+                font-size: 14px;
+            }
+        }
+    
+        &-img{
+            width:220px;
+            height: 200px;
+        }
+    
+        &-description{
+            margin-top: 0.5rem;
+            padding:1rem;
+            h1{
+                margin-bottom: 1rem;
+            }
+    
+            p{
+                font-size: 12px;
+                text-align: justify;
+            }
+        }
+    }
+
+    h1{
+        font-size: 18px;
+    }
+
+    .btn-back{
+        font-size: 14px;
+        padding:0.5rem 0.7rem;
+    }
+}
