@@ -8,6 +8,14 @@
         text-align: center;
         width: 200px;
     }
+    @media (max-width:600px){
+        font-size: 14px;
+        width: 120px;
+        margin-left: 1rem;
+    }
+    @media (max-width:380px){
+        width: 100px;
+    }
 }
 
 .sort-label{

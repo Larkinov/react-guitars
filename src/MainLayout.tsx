@@ -15,8 +15,8 @@ const MainLayout: React.FC = () => {
       <Header />
       <div className="content">
         <Outlet />
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };
